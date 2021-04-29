@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.endava.internship</groupId>
+    <artifactId>sql-migration</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Migration Practice</name>
+    <description>Database Flyway Migration Practice</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+<!--    These are your database credentials. You do not need to change these.
+        Please follow README.MD instructions to create this user in the DB, before you can start flyway migration.-->
+        <flyway-db.user>hr_migration</flyway-db.user>
+        <flyway-db.password>hr_migration</flyway-db.password>
+        <flyway-db.url>jdbc:oracle:thin:@//localhost:1521/PDB</flyway-db.url>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.3.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>6.0.3</version>
+                <configuration>
+                    <url>${flyway-db.url}</url>
+                    <user>${flyway-db.user}</user>
+                    <password>${flyway-db.password}</password>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

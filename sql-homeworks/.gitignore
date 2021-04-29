@@ -1,0 +1,17 @@
+# Eclipse
+.classpath
+.project
+.settings/
+.factorypath
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+*.bak
+*.log
+*.gz

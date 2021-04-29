@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  oracle:
+    image: 'aleanca/oracledb-12.2.0.1-ee:12.2.0.1-ee-01'
+    container_name: oracle
+    hostname: oracle
+    environment:
+      ORACLE_SID: 'CDB'
+      ORACLE_PDB: 'PDB'
+      ORACLE_PWD: 'Orclpass123'
+    volumes:
+      - './setup:/opt/oracle/scripts/setup'
+      - 'dbdata:/opt/oracle/oradata'
+    ports:
+      - '1521:1521'
+      - '550:5500'
+    logging:
+      driver: "local"
+      options:
+        max-size: "100m"
+        max-file: "2"
+
+volumes:
+  dbdata:
+    name: dbdata
